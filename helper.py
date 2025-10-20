@@ -29,11 +29,28 @@ class TaskManager:
 
     def done_task(self, id):
         # for each task in the list
+        id = int(id)
         for t in self.list:
-            id = int(id)
             # update time and status if id matches
             if t["id"] == id:
                 t["status"] = "Done"
                 t["done_at"] = strftime("%a, %d %b %Y at %H:%M:%S", localtime())
+
+    def list_tasks(self, filter):
+        filtered_list = []
+        if filter == "" or filter == "all":
+            filtered_list.append(self)
+        elif filter == "done":
+            for t in self.list:
+                if t["status"] == "Done":
+                    filtered_list.append(t)
+        elif filter == "to-do":
+            for t in self.list:
+                if t["status"] == "to-do":
+                    filtered_list.append(t)
+        print(filtered_list)
+            
+
+
          
          
