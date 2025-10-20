@@ -12,5 +12,12 @@
         "status": "to-do",
         "created_at": "Mon, 20 Oct 2025 at 17:14:10",
         "done_at": null
+    },
+    {
+        "id": 3,
+        "title": "do the dishes",
+        "status": "to-do",
+        "created_at": "Mon, 20 Oct 2025 at 18:37:01",
+        "done_at": null
     }
 ]

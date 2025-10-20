@@ -13,11 +13,15 @@ class TaskManager:
     def add_task(self, task):
         
         # initialise id of new task
-        id = len(self.list) + 1
+        if not self.list:
+            new_id = 1
+        else:
+            new_id = max(task["id"] for task in self.list) + 1
+
         
         # create the new task object
         new_task = {
-             "id": id,
+             "id": new_id,
              "title": task,
              "status": "to-do",
              "created_at": strftime("%a, %d %b %Y at %H:%M:%S", localtime()),
@@ -39,7 +43,7 @@ class TaskManager:
     def list_tasks(self, filter):
         filtered_list = []
         if filter == "" or filter == "all":
-            filtered_list.append(self)
+            print(self.list)
         elif filter == "done":
             for t in self.list:
                 if t["status"] == "Done":
@@ -48,7 +52,8 @@ class TaskManager:
             for t in self.list:
                 if t["status"] == "to-do":
                     filtered_list.append(t)
-        print(filtered_list)
+        elif filtered_list > 0:
+            print(filtered_list)
             
 
 
