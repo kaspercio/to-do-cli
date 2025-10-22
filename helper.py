@@ -70,7 +70,7 @@ class TaskManager:
         id = int(id)
         for t in self.list:
             if t["id"] == id:
-                print(t)
+                print(f"Here is task {id}: {t}")
 
             
 
