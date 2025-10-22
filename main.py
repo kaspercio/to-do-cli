@@ -35,13 +35,19 @@ def main():
                # mark the task as Done
                manager.done_task(sys.argv[2])
 
+        # list all tasks
         elif sys.argv[1] == "list":
                 if len(sys.argv) < 3:
                         manager.list_tasks("all")
                 else:
                         manager.list_tasks(sys.argv[2])
 
+        # delete a task
+        elif sys.argv[1] == "delete":
+                manager.delete_task(sys.argv[2])
 
+        elif sys.argv[1] == "desc":
+                manager.desc_task(sys.argv[2])
 
         # write dict as json to file
         manager.write_json()
