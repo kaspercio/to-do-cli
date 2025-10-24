@@ -52,8 +52,9 @@ class TaskManager:
             for t in self.list:
                 if t["status"] == "to-do":
                     filtered_list.append(t)
-        elif filtered_list > 0:
-            print("The following are {0}: {1}".format(t["status"], filtered_list))
+        
+        if len(filtered_list) > 0:
+            print("The following are {0}: {1}".format(filter, filtered_list))
     
     # remove specific task from list
     def delete_task(self, id):
