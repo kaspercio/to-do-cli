@@ -16,24 +16,31 @@ def main():
         # create json file if not already exists
         if not cdjson.is_file():
                with open("to-do.json", "w") as f:
+                        json.dump([], f, indent=4)
                         print(f"to-do.json initialised at {cdjson}")
 
         # write json to python dict
         with open("to-do.json", "r") as f:
                 json_dict = json.load(f)
                 manager = TaskManager(json_dict)
+                if len(json_dict) == 0 and sys.argv[1] != "add":
+                        return print("Remember to add a task first.")
         
 
         # adding tasks
         if sys.argv[1] == "add":
-                
-                # add task to dict
-                manager.add_task(sys.argv[2])
+                if len(sys.argv) < 3:
+                        return print("Make sure to specify a task.")
+                else:
+                        # add task to dict
+                        manager.add_task(sys.argv[2])
 
         elif sys.argv[1] == "done":
-               
-               # mark the task as Done
-               manager.done_task(sys.argv[2])
+               if len(sys.argv) < 3:
+                        return print("Make sure to specify a task.")
+               else:
+                        # mark the task as Done
+                        manager.done_task(sys.argv[2])
 
         # list all tasks
         elif sys.argv[1] == "list":
