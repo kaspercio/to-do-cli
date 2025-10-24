@@ -43,7 +43,7 @@ class TaskManager:
     def list_tasks(self, filter):
         filtered_list = []
         if filter == "" or filter == "all":
-            print(self.list)
+            print(*self.list, sep='\n')
         elif filter == "done":
             for t in self.list:
                 if t["status"] == "Done":
@@ -58,7 +58,7 @@ class TaskManager:
     # remove specific task from list
     def delete_task(self, id):
         t = self.binary_search(id)
-        temp_1 = t[id]
+        temp_1 = id
         temp_2 = t["title"]
         self.list.remove(t)
         print(f"Task {temp_1}: {temp_2} has been removed.")

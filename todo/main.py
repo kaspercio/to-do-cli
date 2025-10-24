@@ -2,7 +2,7 @@ import sys
 import json
 from pathlib import Path
 import os
-from helper import TaskManager
+from todo.helper import TaskManager
 
 
 def main():
@@ -12,6 +12,8 @@ def main():
         cwd = os.getcwd()
         cdjson = cwd + "/to-do.json"
         cdjson = Path(cdjson)
+        cdjson = Path.home() / "to-do.json"
+        
 
         # create json file if not already exists
         if not cdjson.is_file():
