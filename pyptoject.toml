@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "to-do-cli"
+version = "1.0"
+description = "A simple CLI-based to-do list manager."
+authors = [{ name = "kaspercio" }]
+readme = "README.md"
+requires-python = ">=3.10.12"
+license = { text = "MIT" }
+
+[project.scripts]
+todo = "todo.main:main"
