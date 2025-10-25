@@ -1,7 +1,6 @@
 import sys
 import json
 from pathlib import Path
-import os
 from todo.helper import TaskManager
 
 
@@ -9,23 +8,22 @@ def main():
 
         
         # find and designate file path for json file
-        cwd = os.getcwd()
-        cdjson = cwd + "/to-do.json"
-        cdjson = Path(cdjson)
         cdjson = Path.home() / "to-do.json"
         
 
         # create json file if not already exists
         if not cdjson.is_file():
-               with open("to-do.json", "w") as f:
+               with open(cdjson, "w") as f:
                         json.dump([], f, indent=4)
                         print(f"to-do.json initialised at {cdjson}")
-
+        
         # write json to python dict
-        with open("to-do.json", "r") as f:
+        with open(cdjson, "r") as f:
                 json_dict = json.load(f)
                 manager = TaskManager(json_dict)
-                if len(json_dict) == 0 and sys.argv[1] != "add":
+                if len(sys.argv) < 2:
+                        return print("todo \n | \n |-- add YOUR TASK TITLE \n e.g. add \"Check emails\" \n |-- delete YOUR TASK ID \n |-- desc YOUR TASK ID \n |-- done YOUR TASK ID \n |-- list TASK STATUS")
+                if len(json_dict) < 1 and sys.argv[1] != "add":
                         return print("Remember to add a task first.")
         
 
@@ -59,7 +57,7 @@ def main():
                 manager.desc_task(sys.argv[2])
 
         # write dict as json to file
-        manager.write_json()
+        manager.write_json(cdjson)
 
 
 if __name__ == "__main__":

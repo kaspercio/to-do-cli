@@ -7,8 +7,8 @@ class TaskManager:
     def __init__(self, list):
         self.list = list
 
-    def write_json(self):
-        with open("to-do.json", "w") as f:
+    def write_json(self, cd):
+        with open(cd, "w") as f:
             json.dump(self.list, f, indent=4)
 
     def add_task(self, task):
@@ -69,6 +69,9 @@ class TaskManager:
     def desc_task(self, id):
         t = self.binary_search(id)   
         print(f"Here is task {id}: {t}")
+
+    def list_len(self):
+        return print(len(self.list))
     
     # find task from a list of dictionaries
     def binary_search(self, id):
