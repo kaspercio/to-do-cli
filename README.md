@@ -14,7 +14,7 @@ Read specific tasks from the list
 
 ## Installation
 Run the following in your terminal to install the cli with pip package manager.
-```pip install git+https://github.com/YOUR_USERNAME/todo-cli.git```
+```pip install git+https://github.com/kaspercio/todo-cli.git```
 
 ## Usage
 
